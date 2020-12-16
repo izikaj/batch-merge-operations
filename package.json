@@ -4,10 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "chrome": "'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'  --remote-debugging-port=9222 --no-first-run --no-default-browser-check --user-data-dir=/tmp/browser",
-    "dev": "node dev.js",
-    "dev2": "node dev2.js",
-    "start": "npm run chrome & npm run dev",
+    "chrome": "'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --remote-debugging-port=9222 --no-first-run --no-default-browser-check --user-data-dir=/tmp/browser",
+    "start": "node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "IzikAJ",
