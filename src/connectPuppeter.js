@@ -17,7 +17,7 @@ async function connectPuppeter() {
             width: 1440,
             height: 768,
           },
-        }).then((browser) => resolve({ browser }));
+        }).then((browser) => resolve({ chrome, browser }));
       });
     });
   });
