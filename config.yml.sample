@@ -1,0 +1,9 @@
+repos:
+  - repo: https://bitbucket.org/IzikAJ/git_test
+    src: dev
+    dst: staging
+
+  - repo: https://bitbucket.org/IzikAJ/git_test
+    src: staging
+    dst: master
+
