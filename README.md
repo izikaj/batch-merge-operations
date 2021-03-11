@@ -6,27 +6,23 @@ Batch operations via puppeter
 create sample config file
 ```
 cp config.yml.sample config.yml
-code config.yml
+cp credentials.yml.sample credentials.yml
+code config.yml credentials.yml
 ```
 
-
-### Setup browser authorization:
-```
-npm run chrome
-```
-in opened browser window you can sign in with your profile
+Generate app password here:
+[app-passwords](https://bitbucket.org/account/settings/app-passwords/)
 
 ## Run:
-run with default config:
+run with config:
 ```
-npm start
-```
-run for some other configs:
-```
-npm start other-config.yml one-more-config.yml ...
+bin/merger config.yml
 ```
 
-### launch Chrome manually
-```
-"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"  --remote-debugging-port=9222 --no-first-run --no-default-browser-check --user-data-dir=/tmp/browser
-```
+## To read:
+
+### example API usage
+curl -u "username:app_password" "https://api.bitbucket.org/2.0/repositories/team/repo"
+
+### API docs
+https://developer.atlassian.com/bitbucket/api/2/reference/resource/repositories

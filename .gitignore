@@ -1,3 +1,4 @@
 node_modules/
 *.yml
 screen/*.png
+.byebug_history
