@@ -1,33 +1,21 @@
+# frozen_string_literal: true
+
 require_relative './api'
 require 'time'
-
-# repo = api.get
-# sleep 1
-# branches = api.get(repo.dig('links', 'branches', 'href'))
-# sleep 1
-# branch_names = branches['values']&.map { |i| i['name'] }
-# pull_requests = api.get('pullrequests')
-# sleep 1
-
-# transition = %w[staging master]
-# pr = api.post(
-#   'pullrequests',
-#   data: {
-#     title: "AUTO: Merge updates (#{transition.first} => #{transition.last})",
-#     source: { branch: { name: transition.first } },
-#     destination: { branch: { name: transition.last } }
-#   }
-# )
-
-# resp = HTTParty.get('https://api.bitbucket.org/2.0/repositories/netfixllc?role=member', opts)
-
-# resp.response.body
 
 class Merger
   attr_reader :config
 
-  def initialize
+  def initialize; end
+
+  def config_file!
     @config = load_config
+    self
+  end
+
+  def custom_config!(config)
+    @config = config
+    self
   end
 
   def all!
