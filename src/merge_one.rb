@@ -13,17 +13,16 @@ puts "DSTS #{dsts.inspect}"
 git_conf = File.join(root, '.git/config')
 raw = File.read(git_conf) if File.exist?(git_conf)
 
-repo_m = /^\s*url = git@bitbucket.org:(.+?).git\s*$/mi.match(raw)
+# git remote -v
+prefixes = [
+  'git@bitbucket.org:',
+  'ssh://git@bitbucket.org/'
+]
+repo_m = /^\s*url = (?:#{prefixes.join('|')})(.+?).git\s*$/mi.match(raw)
 repo = repo_m[1] if repo_m
 
 puts "REPO #{repo}"
-branch_r = /^\s*\[branch\s*"(.+?)"\]\s*$/mi
-cur = 0
-branchs = []
-while m = branch_r.match(raw, cur)
-  cur = m.end(1)
-  branchs << m[1]
-end
+branchs = Dir.chdir(root) { `git branch` }.lines.map { |l| l.gsub(/^\s*\*/, '') }.map(&:strip)
 puts "BRANCHES #{branchs}"
 
 throw 'Source not found' unless branchs.include?(src)
