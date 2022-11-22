@@ -18,8 +18,13 @@ prefixes = [
   'git@bitbucket.org:',
   'ssh://git@bitbucket.org/'
 ]
+
+throw 'Could not find repo, is it really [bitbucket] one?' unless raw =~ /bitbucket/
+
 repo_m = /^\s*url = (?:#{prefixes.join('|')})(.+?).git\s*$/mi.match(raw)
 repo = repo_m[1] if repo_m
+
+throw 'Could not find repo' unless repo
 
 puts "REPO #{repo}"
 branchs = Dir.chdir(root) { `git branch` }.lines.map { |l| l.gsub(/^\s*\*/, '') }.map(&:strip)
